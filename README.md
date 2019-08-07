@@ -6,7 +6,7 @@
 A little project which I create during learning JavaScript.
 
 ## Technologies
-* JavaScript ES5
+* JavaScript ES6
 * HTML 5
 * CSS 3
 
