@@ -1,70 +1,78 @@
-function getClass() {
-  var startButton = document.getElementById("start");
-  startButton.onclick = clickButton;
-}
+const start = document.getElementById("start");
+start.addEventListener("click", clickButton);
 
 function clickButton() {
-  var buttons = ["first", "second", "third", "fourth", "fifth", "sixth"];
-  var colors = ["red", "yellow", "green", "blue", "pink", "orange"];
-  var copyColors = [];
+   const buttons = ["first", "second", "third", "fourth", "fifth", "sixth"];
+   const colors = ["red", "yellow", "green", "blue", "pink", "orange"];
+   const copyColors = [];
 
-  for (var i = 0; i < buttons.length; i++) {
+   for (let i = 0; i < buttons.length; i++) {
+      const randColor = Math.floor(Math.random() * colors.length);
 
-    var randColor = Math.floor(Math.random() * colors.length);
+      copyColors.push(colors[randColor]);
 
-    copyColors.push(colors[randColor]);
+      const delColors = colors.splice(randColor, 1);
 
-    var delColors = colors.splice(randColor, 1);
+      const getButton = document.getElementById(buttons[i]);
 
-    var getButton = document.getElementById(buttons[i]);
+      getButton.classList.add(copyColors[i]);
+   }
 
-    getButton.classList.add(copyColors[i]);
+   const reload = document.getElementById("reload");
+   reload.innerHTML = "RESET";
+   start.addEventListener("click", function() {
+      window.location.reload();
+   });
 
-
-  }
-  setTimeout(prevColor, 3000, buttons, copyColors);
-
+   setTimeout(prevColor, 1000, buttons, copyColors);
 }
 
 function prevColor(buttons, copyColors) {
+   const copyCol = copyColors.slice();
 
-  var copyCol = copyColors.slice();
+   const textArray = copyCol.sort(function() {
+      return 0.5 - Math.random();
+   });
 
-  var textArray = copyCol.sort(function (a, b) {
-    return 0.5 - Math.random()
-  });
+   const selectClass = document.querySelectorAll(".square");
 
-  var selectClass = document.querySelectorAll(".square");
-  
-  for (var i = 0; i < buttons.length; i++) {
+   for (let i = 0; i < buttons.length; i++) {
+      let delClass = selectClass[i].classList.toggle("aqua");
+   }
 
-    var delClass = selectClass[i].classList.toggle("aqua");
+   const copyTextArray = textArray.slice();
 
-  }
+   document.getElementById("color-btn").addEventListener("click", function(e) {
+      if (e.target.nodeName === "BUTTON" && e.target.classList[1] === copyTextArray[0]) {
+         e.target.classList.remove("aqua");
 
-  var copyTextArray = textArray.slice();
+         copyTextArray.shift();
+      }
+   });
 
-  document.getElementById("color-btn").addEventListener("click", function (e) {
+   order(textArray);
 
-    if (e.target.nodeName === "BUTTON" && e.target.classList[1] === copyTextArray[0]) {
-
-      e.target.classList.remove("aqua");
-
-      copyTextArray.shift();
-    } 
-    
-  })
-
-  order(textArray);
-
-//  console.log(copyColors); //test
-//  console.log(textArray); //test
+   //  console.log(copyColors); //test
+   //  console.log(textArray); //test
 }
-
 
 function order(text) {
-  var innerText = document.getElementById("info");
-  innerText.innerHTML = "CLICK BUTTONS IN PROPER ORDER: " + text[0] + ", " + text[1] + ", " + text[2] + ", " + text[3] + ", " + text[4] + ", " + text[5] + " !";
-}
+   const innerText = document.getElementById("info");
+   const upCase = text.map(function(color) {
+      return color.toUpperCase().fontcolor(color);
+   });
 
-window.onload = getClass;
+   innerText.innerHTML = `CLICK BUTTONS IN PROPER ORDER: 
+      ${upCase[0]},
+      
+      ${upCase[1]},
+      
+      ${upCase[2]}, 
+      
+      ${upCase[3]}, 
+      
+      ${upCase[4]}, 
+      
+      ${upCase[5]} 
+      !`;
+}
