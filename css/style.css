@@ -34,12 +34,29 @@ body {
    background-color: gray;
 }
 
-.score {
+#level,
+#score {
+   margin: 0;
+}
+
+.board,
+#lives {
    display: flex;
    width: 200px;
    height: 200px;
+   align-items: center;
+   justify-content: space-evenly;
    margin-top: 150px;
    background-color: darkolivegreen;
+}
+
+#lives i {
+   color: red;
+   font-size: 40px;
+}
+
+.board {
+   flex-direction: column;
 }
 
 .red {
