@@ -82,7 +82,7 @@ function prevColor(buttons, copyColors) {
    });
 
    order(textArray);
-
+   board(selectClass, buttons);
    //  console.log(copyColors); //test
    //  console.log(textArray); //test
 }
@@ -106,4 +106,42 @@ function order(text) {
       
       ${upCase[5]} 
       !`;
+}
+
+function onBoard() {
+   let original = [1, 2, 3, 4, 5];
+
+   let listArr = sessionStorage.listArr ? JSON.parse(sessionStorage.listArr) : original;
+   let resultSet = listArr.shift();
+
+   sessionStorage.listArr = JSON.stringify(listArr.length ? listArr : original);
+   document.getElementById("level").innerHTML = resultSet;
+   document.getElementById("score").innerHTML = resultSet - 1;
+}
+onBoard();
+
+function board(selectClass, buttons) {
+   let counter1 = 0;
+   let counter2 = 0;
+   console.log(counter1);
+
+   const colorBtn = document.getElementById("color-btn");
+
+   colorBtn.addEventListener("click", function(e) {
+      if (e.target.classList[2] !== "aqua" && e.target.nodeName === "BUTTON") {
+         counter1++;
+         console.log(counter1);
+         e.target.disabled = true;
+      } else if (e.target.classList[2] === "aqua" && e.target.nodeName === "BUTTON") {
+         counter2++;
+         console.log(counter2);
+      }
+      if (counter1 === 6) {
+         counter1 = 0;
+         counter2 = 0;
+         window.location.reload();
+      } else if (counter2 === 3) {
+         console.log("GAME OVER");
+      }
+   });
 }
