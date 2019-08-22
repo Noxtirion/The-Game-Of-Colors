@@ -18,11 +18,18 @@ function clickButton() {
       getButton.classList.add(copyColors[i]);
    }
 
+const reset = function() {
+   sessionStorage.clear();
+   window.location.reload();
+};
+
+function resetBtn() {
    const reload = document.getElementById("reload");
    reload.innerHTML = "RESET";
    start.addEventListener("click", function() {
-      window.location.reload();
+      reset();
    });
+}
 
    setTimeout(prevColor, 1000, buttons, copyColors);
 }
