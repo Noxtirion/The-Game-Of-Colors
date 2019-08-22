@@ -17,7 +17,20 @@ function clickButton() {
 
       getButton.classList.add(copyColors[i]);
    }
+   resetBtn();
 
+   timer(buttons, copyColors);
+}
+
+function timer(buttons, copyColors) {
+   const minutes = [7000, 6000, 5000, 4000, 3000];
+
+   let getLvl = document.getElementById("level").innerHTML;
+   console.log(getLvl);
+
+   setTimeout(prevColor, minutes[getLvl - 1], buttons, copyColors);
+} 
+  
 const reset = function() {
    sessionStorage.clear();
    window.location.reload();
@@ -29,9 +42,6 @@ function resetBtn() {
    start.addEventListener("click", function() {
       reset();
    });
-}
-
-   setTimeout(prevColor, 1000, buttons, copyColors);
 }
 
 function prevColor(buttons, copyColors) {
