@@ -5,6 +5,9 @@
       <title>Game Of Colors</title>
 
       <link rel="stylesheet" href="css/style.css" />
+
+      <!-- vendor -->
+      <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet" />
    </head>
 
    <body>
@@ -27,10 +30,21 @@
       </div>
 
       <div class="container">
+         <div id="lives">
+            <p>LIVES:</p>
+            <i class="icon ion-md-heart" id="one"></i>
+            <i class="icon ion-md-heart" id="two"></i>
+            <i class="icon ion-md-heart" id="three"></i>
+         </div>
          <button id="start">
             <p id="reload">START</p>
          </button>
-         <div class="score"></div>
+         <div class="board">
+            <p>LEVEL:</p>
+            <p id="level">1</p>
+            <p>SCORE:</p>
+            <p id="score">0</p>
+         </div>
       </div>
 
       <script src="js/main.js"></script>
