@@ -53,6 +53,9 @@ function prevColor(buttons, copyColors) {
 
    const selectClass = document.querySelectorAll(".square");
 
+   const heartArr = ["three", "two", "one"];
+   const copyHeartArr = [];
+
    for (let i = 0; i < buttons.length; i++) {
       let delClass = selectClass[i].classList.toggle("aqua");
    }
@@ -64,6 +67,17 @@ function prevColor(buttons, copyColors) {
          e.target.classList.remove("aqua");
 
          copyTextArray.shift();
+      } else if (e.target.nodeName === "BUTTON" && e.target.classList[1] !== copyTextArray[0]) {
+         copyHeartArr.push(heartArr[0]);
+
+         console.log(heartArr);
+
+         const delHeart = heartArr.splice(0, 1);
+         for (let i = 0; i < copyHeartArr.length; i++) {
+            const heart = document.getElementById(copyHeartArr[i]);
+            console.log(heart);
+            heart.classList.replace("ion-md-heart", "ion-md-heart-dislike");
+         }
       }
    });
 
