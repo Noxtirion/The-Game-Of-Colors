@@ -25,7 +25,7 @@ function clickButton() {
 function timer(buttons, copyColors) {
    const minutes = [7000, 6000, 5000, 4000, 3000];
 
-   let getLvl = document.getElementById("level").innerHTML;
+   const getLvl = document.getElementById("level").innerHTML;
    console.log(getLvl);
 
    setTimeout(prevColor, minutes[getLvl - 1], buttons, copyColors);
@@ -57,7 +57,7 @@ function prevColor(buttons, copyColors) {
    const copyHeartArr = [];
 
    for (let i = 0; i < buttons.length; i++) {
-      let delClass = selectClass[i].classList.toggle("aqua");
+      const delClass = selectClass[i].classList.toggle("aqua");
    }
 
    const copyTextArray = textArray.slice();
@@ -109,10 +109,10 @@ function order(text) {
 }
 
 function onBoard() {
-   let original = [1, 2, 3, 4, 5];
+   const original = [1, 2, 3, 4, 5];
 
-   let listArr = sessionStorage.listArr ? JSON.parse(sessionStorage.listArr) : original;
-   let resultSet = listArr.shift();
+   const listArr = sessionStorage.listArr ? JSON.parse(sessionStorage.listArr) : original;
+   const resultSet = listArr.shift();
 
    sessionStorage.listArr = JSON.stringify(listArr.length ? listArr : original);
    document.getElementById("level").innerHTML = resultSet;
@@ -145,3 +145,12 @@ function board(selectClass, buttons) {
       }
    });
 }
+
+window.addEventListener("load", function(e) {
+   console.log(e);
+   const loading = document.getElementById("loading");
+   if (e) {
+      loading.remove("loading");
+   }
+});
+
