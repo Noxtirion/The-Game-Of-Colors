@@ -17,6 +17,7 @@ function clickButton() {
 
       getButton.classList.add(copyColors[i]);
    }
+
    resetBtn();
 
    timer(buttons, copyColors);
@@ -29,8 +30,8 @@ function timer(buttons, copyColors) {
    console.log(getLvl);
 
    setTimeout(prevColor, minutes[getLvl - 1], buttons, copyColors);
-} 
-  
+}
+
 const reset = function() {
    sessionStorage.clear();
    window.location.reload();
@@ -83,8 +84,8 @@ function prevColor(buttons, copyColors) {
 
    order(textArray);
    board(selectClass, buttons);
-   //  console.log(copyColors); //test
-   //  console.log(textArray); //test
+   console.log(copyColors); //test
+   console.log(textArray); //test
 }
 
 function order(text) {
@@ -109,14 +110,21 @@ function order(text) {
 }
 
 function onBoard() {
-   const original = [1, 2, 3, 4, 5];
-
+   const original = [1, 2, 3, 4, 5, "WIN!"];
+   const score = document.getElementById("score");
+   const endMessage = document.getElementById("end-message");
    const listArr = sessionStorage.listArr ? JSON.parse(sessionStorage.listArr) : original;
    const resultSet = listArr.shift();
 
    sessionStorage.listArr = JSON.stringify(listArr.length ? listArr : original);
    document.getElementById("level").innerHTML = resultSet;
-   document.getElementById("score").innerHTML = resultSet - 1;
+
+   score.innerHTML = resultSet - 1;
+   if (isNaN(score.innerHTML)) {
+      score.innerHTML = "WIN!";
+      endMessage.innerHTML = "CONGRATULATIONS! YOU WIN!";
+      popup();
+   }
 }
 onBoard();
 
@@ -142,8 +150,27 @@ function board(selectClass, buttons) {
          window.location.reload();
       } else if (counter2 === 3) {
          console.log("GAME OVER");
+         popup();
       }
    });
+}
+
+function popup() {
+   const modal = document.querySelector(".modal");
+   const closeButton = document.querySelector(".close-button");
+   function toggleModal() {
+      modal.classList.toggle("show-modal");
+   }
+
+   function windowOnClick(event) {
+      if (event.target === modal) {
+         reset();
+      }
+   }
+
+   toggleModal();
+   closeButton.addEventListener("click", reset);
+   window.addEventListener("click", windowOnClick);
 }
 
 window.addEventListener("load", function(e) {
@@ -153,4 +180,3 @@ window.addEventListener("load", function(e) {
       loading.remove("loading");
    }
 });
-
