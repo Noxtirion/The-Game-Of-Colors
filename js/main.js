@@ -11,7 +11,7 @@ function clickButton() {
 
       copyColors.push(colors[randColor]);
 
-      const delColors = colors.splice(randColor, 1);
+      colors.splice(randColor, 1);
 
       const getButton = document.getElementById(buttons[i]);
 
@@ -27,7 +27,6 @@ function timer(buttons, copyColors) {
    const minutes = [7000, 6000, 5000, 4000, 3000];
 
    const getLvl = document.getElementById("level").innerHTML;
-   console.log(getLvl);
 
    setTimeout(prevColor, minutes[getLvl - 1], buttons, copyColors);
 }
@@ -39,8 +38,10 @@ const reset = function() {
 
 function resetBtn() {
    const reload = document.getElementById("reload");
+   const anchor = document.querySelector(".anchor");
    reload.innerHTML = "RESET";
    start.addEventListener("click", function() {
+      anchor.setAttribute("href", "#reload");
       reset();
    });
 }
@@ -58,7 +59,7 @@ function prevColor(buttons, copyColors) {
    const copyHeartArr = [];
 
    for (let i = 0; i < buttons.length; i++) {
-      const delClass = selectClass[i].classList.toggle("aqua");
+      selectClass[i].classList.toggle("aqua");
    }
 
    const copyTextArray = textArray.slice();
@@ -71,21 +72,16 @@ function prevColor(buttons, copyColors) {
       } else if (e.target.nodeName === "BUTTON" && e.target.classList[1] !== copyTextArray[0]) {
          copyHeartArr.push(heartArr[0]);
 
-         console.log(heartArr);
-
          const delHeart = heartArr.splice(0, 1);
          for (let i = 0; i < copyHeartArr.length; i++) {
             const heart = document.getElementById(copyHeartArr[i]);
-            console.log(heart);
             heart.classList.replace("ion-md-heart", "ion-md-heart-dislike");
          }
       }
    });
 
    order(textArray);
-   board(selectClass, buttons);
-   console.log(copyColors); //test
-   console.log(textArray); //test
+   board();
 }
 
 function order(text) {
@@ -95,18 +91,7 @@ function order(text) {
    });
 
    innerText.innerHTML = `CLICK BUTTONS IN PROPER ORDER: 
-      ${upCase[0]},
-      
-      ${upCase[1]},
-      
-      ${upCase[2]}, 
-      
-      ${upCase[3]}, 
-      
-      ${upCase[4]}, 
-      
-      ${upCase[5]} 
-      !`;
+      ${upCase[0]}, ${upCase[1]}, ${upCase[2]}, ${upCase[3]}, ${upCase[4]}, ${upCase[5]}!`;
 }
 
 function onBoard() {
@@ -128,28 +113,24 @@ function onBoard() {
 }
 onBoard();
 
-function board(selectClass, buttons) {
+function board() {
    let counter1 = 0;
    let counter2 = 0;
-   console.log(counter1);
 
    const colorBtn = document.getElementById("color-btn");
 
    colorBtn.addEventListener("click", function(e) {
       if (e.target.classList[2] !== "aqua" && e.target.nodeName === "BUTTON") {
          counter1++;
-         console.log(counter1);
          e.target.disabled = true;
       } else if (e.target.classList[2] === "aqua" && e.target.nodeName === "BUTTON") {
          counter2++;
-         console.log(counter2);
       }
       if (counter1 === 6) {
          counter1 = 0;
          counter2 = 0;
          window.location.reload();
       } else if (counter2 === 3) {
-         console.log("GAME OVER");
          popup();
       }
    });
@@ -174,7 +155,6 @@ function popup() {
 }
 
 window.addEventListener("load", function(e) {
-   console.log(e);
    const loading = document.getElementById("loading");
    if (e) {
       loading.remove("loading");

@@ -2,6 +2,7 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
       <title>Game Of Colors</title>
 
       <link rel="stylesheet" href="css/style.css" />
@@ -11,7 +12,7 @@
    </head>
 
    <body>
-      <div class="container" id="color-btn">
+      <div class="container container-top" id="color-btn">
          <button class="square" id="first"></button>
 
          <button class="square" id="second"></button>
@@ -25,20 +26,22 @@
          <button class="square" id="sixth"></button>
       </div>
 
-      <div class="container">
+      <div class="container info-size">
          <h2 id="info">ARE YOU READY?</h2>
       </div>
 
-      <div class="container">
+      <div class="container container-bottom">
          <div id="lives">
             <p>LIVES:</p>
             <i class="icon ion-md-heart" id="one"></i>
             <i class="icon ion-md-heart" id="two"></i>
             <i class="icon ion-md-heart" id="three"></i>
          </div>
-         <button id="start">
-            <p id="reload">START</p>
-         </button>
+         <a href="#color-btn" class="anchor">
+            <button id="start">
+               <p id="reload">START</p>
+            </button>
+         </a>
          <div class="board">
             <p>LEVEL:</p>
             <p id="level">1</p>
