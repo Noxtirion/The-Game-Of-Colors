@@ -1,7 +1,8 @@
 *,
 *:before,
 *:after {
-   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+           box-sizing: border-box;
 }
 
 :root {
@@ -14,9 +15,15 @@ body {
 }
 
 .container {
+   display: -webkit-box;
+   display: -ms-flexbox;
    display: flex;
-   align-items: center;
-   justify-content: space-evenly;
+   -webkit-box-align: center;
+       -ms-flex-align: center;
+           align-items: center;
+   -webkit-box-pack: space-evenly;
+       -ms-flex-pack: space-evenly;
+           justify-content: space-evenly;
    width: 100%;
    height: 100%;
    padding: 5px;
@@ -24,7 +31,8 @@ body {
 
 .container-top {
    margin-top: 2rem;
-   flex-wrap: wrap;
+   -ms-flex-wrap: wrap;
+       flex-wrap: wrap;
 }
 
 .container-bottom {
@@ -52,7 +60,8 @@ body {
    background-color: rgb(43, 134, 55);
    border-radius: 1rem;
    cursor: pointer;
-   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .square:focus,
@@ -66,7 +75,8 @@ body {
 }
 
 .square:hover {
-   box-shadow: 0px 0px 10px var(--color);
+   -webkit-box-shadow: 0px 0px 10px var(--color);
+           box-shadow: 0px 0px 10px var(--color);
 }
 
 #start {
@@ -81,7 +91,8 @@ body {
 }
 
 #start:hover {
-   box-shadow: 0px 0px 10px var(--color);
+   -webkit-box-shadow: 0px 0px 10px var(--color);
+           box-shadow: 0px 0px 10px var(--color);
 }
 
 #level,
@@ -91,17 +102,27 @@ body {
 
 .board,
 #lives {
+   display: -webkit-box;
+   display: -ms-flexbox;
    display: flex;
    width: 120px;
    height: 190px;
-   align-items: center;
-   justify-content: space-evenly;
-   flex-direction: column;
+   -webkit-box-align: center;
+       -ms-flex-align: center;
+           align-items: center;
+   -webkit-box-pack: space-evenly;
+       -ms-flex-pack: space-evenly;
+           justify-content: space-evenly;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+       -ms-flex-direction: column;
+           flex-direction: column;
    margin: 5px;
    margin-top: 50px;
    background-color: var(--color);
    border-radius: 1rem;
-   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+   -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 #lives i {
@@ -110,7 +131,10 @@ body {
 }
 
 .board {
-   flex-direction: column;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+       -ms-flex-direction: column;
+           flex-direction: column;
 }
 
 .red {
@@ -142,9 +166,15 @@ body {
 }
 
 #loading {
+   display: -webkit-box;
+   display: -ms-flexbox;
    display: flex;
-   justify-content: center;
-   align-items: center;
+   -webkit-box-pack: center;
+       -ms-flex-pack: center;
+           justify-content: center;
+   -webkit-box-align: center;
+       -ms-flex-align: center;
+           align-items: center;
    position: fixed;
    background-color: black;
    width: 100%;
@@ -170,14 +200,22 @@ body {
    background-color: rgba(0, 0, 0, 0.5);
    opacity: 0;
    visibility: hidden;
-   transform: scale(1.1);
+   -webkit-transform: scale(1.1);
+       -ms-transform: scale(1.1);
+           transform: scale(1.1);
+   -webkit-transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
+   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
+   -o-transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
 }
 .modal-content {
    position: absolute;
    top: 50%;
    left: 50%;
-   transform: translate(-50%, -50%);
+   -webkit-transform: translate(-50%, -50%);
+       -ms-transform: translate(-50%, -50%);
+           transform: translate(-50%, -50%);
    background-color: white;
    padding: 1rem 1.5rem;
    width: 15rem;
@@ -200,8 +238,14 @@ body {
 .show-modal {
    opacity: 1;
    visibility: visible;
-   transform: scale(1);
+   -webkit-transform: scale(1);
+       -ms-transform: scale(1);
+           transform: scale(1);
+   -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+   transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+   -o-transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
 }
 
 /* RWD  */
