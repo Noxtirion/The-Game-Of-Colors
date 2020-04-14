@@ -4,20 +4,20 @@
 
 ## General info
 
-A little project which I create during learning JavaScript.
+A little project which I created during learning JavaScript.
 
 ## Technologies
 
--  JavaScript ES5
--  HTML 6
--  CSS 3
+-  JavaScript
+-  HTML
+-  CSS
 
 ## Rules
 
 -  Click the START button,
--  Remember color of each square (You have 3 seconds),
+-  Remember color of each square (Each level you have less time),
 -  Click buttons in proper order.
 
-## Status
+## Live
 
-Project is in progress. It will be expanded and improved while I learn more technology.
+[Live](https://noxtirion.github.io/The-Game-Of-Colors/)
